@@ -5,8 +5,8 @@
   (add-path "modes/ruby/rhtml")
   (add-path "modes/ruby/rinari")
   (add-path "modes/ruby/rinari/utils")
+  (add-path "utils")
 )
-
 
 ;; Javascript mode
 (autoload 'js2-mode "js2" nil t)
@@ -43,13 +43,6 @@
 				  (require 'unit-test)
 				  (require 'autotest)
 				  (setq autotest-use-ui t)))))
-;; ;; Add inf-ruby (irb) key hooks
-;; (autoload 'inf-ruby "inf-ruby" nil t)
-;; (autoload 'inf-ruby-keys "inf-ruby" nil t)
-;; (eval-after-load 'ruby-mode
-;;   '(add-hook 'ruby-mode-hook 'inf-ruby-keys))
-;; ; minor-mode for Ruby on Rails as well as basic ruby-mode
-;; (require 'rinari)
 
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
@@ -58,7 +51,6 @@
 (autoload 'mode-compile-kill "mode-compile"
   "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
-
 
 ;; Make the window transparent in Mac OS X when not running from a
 ;; terminal requires Carbon Emacs
@@ -73,3 +65,20 @@
 (yas/load-directory (concat emacs-d-root "snippet/snippets/"))
 (yas/load-directory (concat emacs-d-root "snippet/rails-snippets/"))
 (yas/load-directory (concat emacs-d-root "snippet/my-snippets/"))
+
+;; Uniquify the buffer names by adding the path instead of file<2> file<3> etc
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
+;; Remove unused buffers at midnight
+(require 'midnight)
+
+;; Easier moving between open buffers in frame with C-c<arrow key>
+(require 'windmove)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)

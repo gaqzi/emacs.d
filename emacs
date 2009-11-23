@@ -5,6 +5,7 @@
                      "/home/ba/"))
 (defvar emacs-d-root (concat emacs-root "code/emacs.d/"))
 
+(require 'cl)
 (cd emacs-root) ; Start emacs from my home and nowhere else!
 ;; M-x with C-x C-m
 (global-set-key "\C-x\C-m" 'execute-extended-command)
