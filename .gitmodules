@@ -1,0 +1,6 @@
+[submodule "modes/ruby/rhtml"]
+	path = modes/ruby/rhtml
+	url = git://github.com/eschulte/rhtml.git
+[submodule "modes/ruby/rinari"]
+	path = modes/ruby/rinari
+	url = git://github.com/eschulte/rinari.git

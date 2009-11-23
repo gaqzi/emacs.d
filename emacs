@@ -82,7 +82,6 @@
   (add-path "snippet")
   (add-path "testing")
   (add-path "modes")
-;;  (add-path ".emacs.d/modes/ruby")
   )
 
 (load-library "modes") ;; configuration for modes
