@@ -12,5 +12,7 @@ git submodule update
 echo "Initializing 'modes/ruby/rinari' submodules"
 (cd modes/ruby/rinari ; git submodule init && git submodule update)
 
-echo "Byte-compile .el-files"
-emacs -batch -eval '(byte-compile-file "modes/js2.el")'
+echo "Byte-compiling .el-files"
+for file in "modes/js2.el" ; do
+    emacs -batch -eval "(byte-compile-file \"${file}\")"
+done
