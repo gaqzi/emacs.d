@@ -34,7 +34,7 @@
                             (setq ri-ruby-script
                                   (concat emacs-d-root "modes/ruby/ri-emacs.rb"))
                             (autoload 'ri
-                              (concat emacs-d-root "ri-ruby") nil t)
+                              (concat emacs-d-root "modes/ruby/ri-ruby") nil t)
                             (local-set-key [f1] 'ri)
                             (local-set-key [f4] 'ri-ruby-show-args)
                             ;; Autotest

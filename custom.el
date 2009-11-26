@@ -5,4 +5,5 @@
  ;; If there is more than one, they won't work right.
  '(autotest-use-ui t)
  '(indent-tabs-mode nil)
- '(compilation-scroll-output t))
+ '(compilation-scroll-output t)
+ '(require-final-newline t))
