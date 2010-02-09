@@ -5,6 +5,7 @@
   (add-path "modes/ruby/rhtml")
   (add-path "modes/ruby/rinari")
   (add-path "modes/ruby/rinari/utils")
+  (add-path "modes/django")
   (add-path "utils")
 )
 
@@ -82,3 +83,6 @@
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
+
+;; Django modes
+(require 'django-html-mode)
