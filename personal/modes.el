@@ -44,6 +44,16 @@
 				  (require 'unit-test)
 				  (require 'autotest)
 				  (setq autotest-use-ui t)))))
+(require 'rhtml-mode)
+
+;; HAML-mode
+(autoload 'haml-mode "haml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.\\(haml\\|hml\\)$" . haml-mode))
+
+;; SASS-mode
+(autoload 'sass-mode "sass-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
+
 
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
@@ -86,3 +96,4 @@
 
 ;; Django modes
 (require 'django-html-mode)
+
