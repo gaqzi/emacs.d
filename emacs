@@ -88,9 +88,12 @@
 (load-library "modes") ;; configuration for modes
 
 ;; Make it nice with a custom color-theme!
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-ld-dark)
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-ld-dark)
+
+;; (set-default-font "Liberation Mono")
+;; (set-face-attribute 'default nil :height 100 :slant nil)
 
 (setq Info-directory-list (append '((concat emacs-d-root "info"))
 				  Info-default-directory-list))
