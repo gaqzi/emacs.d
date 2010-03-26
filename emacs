@@ -54,6 +54,9 @@
 ;; Automatic abbrevation expand!
 ;(setq default-abbrev-mode t)
 
+; I do not want this stupid default behavior
+(setq transient-mark-mode nil)
+
 ;; Put the path in buffer names, no more index.txt<2>!
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -87,14 +90,6 @@
 
 (load-library "modes") ;; configuration for modes
 
-;; Make it nice with a custom color-theme!
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-ld-dark)
-
-;; (set-default-font "Liberation Mono")
-;; (set-face-attribute 'default nil :height 100 :slant nil)
-
-(setq Info-directory-list (append '((concat emacs-d-root "info"))
-				  Info-default-directory-list))
-
+(require 'info)
+(setq Info-directory-list (cons (concat emacs-d-root "info/")
+				Info-default-directory-list))
