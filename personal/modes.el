@@ -5,6 +5,7 @@
   (add-path "modes/ruby/rhtml")
   (add-path "modes/ruby/rinari")
   (add-path "modes/ruby/rinari/utils")
+  (add-path "modes/ruby/rvm")
   (add-path "modes/django")
   (add-path "utils")
 )
@@ -21,12 +22,11 @@
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(yml\\|yaml\\)$" . yaml-mode))
 ;; Ruby hooks
-(require 'rinari) ;; Rails minor mode and Ruby utilities
 (add-hook 'ruby-mode-hook (lambda ()
                             ;; Rcodetools
                             (require 'rcodetools)
                             (local-set-key "\M-\C-i" 'rct-complete-symbol)
-                            (local-set-key [f2] 'xmp)
+;                            (local-set-key [f2] 'xmp)
                             ;; IRB
                             (require 'inf-ruby)
                             (inf-ruby-keys)
@@ -43,9 +43,11 @@
                                 (progn
 				  (require 'unit-test)
 				  (require 'autotest)
+                  (require 'rvm)
+                  (require 'rhtml-mode)
+                  (require 'rinari) ;; Rails minor mode and Ruby utilities
 				  (setq autotest-use-ui t)))))
-(require 'rhtml-mode)
-
+(add-to-list 'auto-mode-alist '("(Gemfile|Rakefile)" . ruby-mode))
 ;; HAML-mode
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(haml\\|hml\\)$" . haml-mode))
@@ -53,7 +55,6 @@
 ;; SASS-mode
 (autoload 'sass-mode "sass-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
-
 
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
@@ -100,3 +101,15 @@
 ;; zsh
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
+
+;; C
+(setq c-default-style "bsd"
+      c-basic-offset 4)
+
+;; C#
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+(add-hook 'csharp-mode-hook (lambda()
+                              (setq c-tab-always-indent t
+                                    indent-tabs-mode t)))

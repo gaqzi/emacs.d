@@ -54,6 +54,11 @@
 ;; Automatic abbrevation expand!
 ;(setq default-abbrev-mode t)
 
+;; A tab is 4 spaces and don't insert tabs unless the given mode
+;; forces it.
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
 ; I do not want this stupid default behavior
 (setq transient-mark-mode nil)
 
