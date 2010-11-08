@@ -31,7 +31,7 @@
                             ;; Rcodetools
                             (require 'rcodetools)
                             (local-set-key "\M-\C-i" 'rct-complete-symbol)
-                            (local-set-key [f2] 'xmp)
+                            ;; (local-set-key [f2] 'xmp)
                             ;; IRB
                             (require 'inf-ruby)
                             (inf-ruby-keys)
