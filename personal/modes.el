@@ -7,13 +7,14 @@
   (add-path "modes/ruby/rinari/utils")
   (add-path "modes/ruby/rvm")
   (add-path "modes/django")
+  (add-path "modes/scala")
   (add-path "utils")
 )
 
 ;; Color theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-ld-dark)
+;; (require 'color-theme)
+;; (color-theme-initialize)
+;; (color-theme-ld-dark)
 
 ;; Javascript mode
 (autoload 'js2-mode "js2" nil t)
@@ -52,7 +53,8 @@
                   (require 'rhtml-mode)
                   (require 'rinari) ;; Rails minor mode and Ruby utilities
 				  (setq autotest-use-ui t)))))
-(add-to-list 'auto-mode-alist '("(Gemfile|Rakefile)" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\)" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . ruby-mode))
 ;; HAML-mode
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(haml\\|hml\\)$" . haml-mode))
@@ -118,3 +120,5 @@
 (add-hook 'csharp-mode-hook (lambda()
                               (setq c-tab-always-indent t
                                     indent-tabs-mode t)))
+;; Scala
+(require 'scala-mode-auto)
