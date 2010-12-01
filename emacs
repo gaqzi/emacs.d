@@ -31,9 +31,6 @@
 (line-number-mode 1)
 (blink-cursor-mode nil)
 
-;; Where to save the custom variables
-(setq custom-file (concat emacs-d-root "custom.el"))
-(load custom-file)
 
 ;; Yes is long, prefer y
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -98,3 +95,7 @@
 (require 'info)
 (setq Info-directory-list (cons (concat emacs-d-root "info/")
 				Info-default-directory-list))
+
+;; Where to save the custom variables
+(setq custom-file (concat emacs-d-root "custom.el"))
+(load custom-file)
