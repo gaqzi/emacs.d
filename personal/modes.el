@@ -8,6 +8,7 @@
   (add-path "modes/ruby/rvm")
   (add-path "modes/django")
   (add-path "modes/scala")
+  (add-path "modes/haskell")
   (add-path "utils")
 )
 
@@ -122,3 +123,12 @@
                                     indent-tabs-mode t)))
 ;; Scala
 (require 'scala-mode-auto)
+
+;; Haskell
+(autoload 'haskell-mode "haskell-mode" "Major mode for editing Haskell" t)
+(setq auto-mode-alist
+      (append '(("\\.hs$" . haskell-mode)) auto-mode-alist))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
