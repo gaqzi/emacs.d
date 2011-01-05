@@ -132,3 +132,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+(autoload 'vcl-mode "vcl-mode" "Major mode for editing Varnish Configuration Language" t)
+(setq auto-mode-alist
+      (append '(("\\.vcl$" . vcl-mode)) auto-mode-alist))
