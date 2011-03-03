@@ -44,14 +44,14 @@
                               (concat emacs-d-root "modes/ruby/ri-ruby") nil t)
                             (local-set-key [f1] 'ri)
                             (local-set-key [f4] 'ri-ruby-show-args)
+                            (require 'rvm)
+                            (require 'rhtml-mode)
+                            (require 'rinari) ;; Rails minor mode and Ruby utilities
                             ;; Autotest
                             (if (not (eq window-system nil))
                                 (progn
 				  (require 'unit-test)
 				  (require 'autotest)
-                  (require 'rvm)
-                  (require 'rhtml-mode)
-                  (require 'rinari) ;; Rails minor mode and Ruby utilities
 				  (setq autotest-use-ui t)))))
 (add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\)" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . ruby-mode))

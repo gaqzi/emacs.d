@@ -1,9 +1,7 @@
 ; -*- mode: emacs-lisp -*-
 ;; The home directory
-(defvar emacs-root (if (eq system-type 'darwin)
-                       "/Users/ba/"
-                     "/home/ba/"))
-(defvar emacs-d-root (concat emacs-root "code/emacs.d/"))
+(defvar emacs-root (getenv "HOME"))
+(defvar emacs-d-root (concat emacs-root "/code/emacs.d/"))
 
 (require 'cl)
 (cd emacs-root) ; Start emacs from my home and nowhere else!
