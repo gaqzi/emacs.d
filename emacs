@@ -35,7 +35,7 @@
 
 ;; Some backup sanity, put it in ~/tmp and keep a revision of them
 (setq backup-by-copying t)
-(add-to-list 'backup-directory-alist (cons "." (concat emacs-root "tmp/")))
+(add-to-list 'backup-directory-alist (cons "." (concat emacs-root "/tmp/")))
 (setq delete-old-versions t)
 (setq kept-new-versions 6)
 (setq kept-old-versions 2)
