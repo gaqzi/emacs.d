@@ -6,6 +6,7 @@
   (add-path "modes/ruby/rinari")
   (add-path "modes/ruby/rinari/utils")
   (add-path "modes/ruby/rvm")
+  (add-path "modes/ruby/cucumber")
   (add-path "modes/django")
   (add-path "modes/scala")
   (add-path "modes/haskell")
@@ -136,3 +137,7 @@
 (autoload 'vcl-mode "vcl-mode" "Major mode for editing Varnish Configuration Language" t)
 (setq auto-mode-alist
       (append '(("\\.vcl$" . vcl-mode)) auto-mode-alist))
+
+(autoload 'feature-mode "feature-mode" "Major mode for editing cucumber features" t)
+(setq auto-mode-alist
+      (append '(("\\.feature$" . feature-mode)) auto-mode-alist))
