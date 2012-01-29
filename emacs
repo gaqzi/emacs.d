@@ -29,7 +29,6 @@
 (line-number-mode 1)
 (blink-cursor-mode nil)
 
-
 ;; Yes is long, prefer y
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -62,7 +61,12 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; Save hooks
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+; Don't remove trailing whitespace in certain modes
+(defun ba-delete-trailing-whitespace ()
+  (unless (string-equal mode-name "Markdown")
+    (progn
+      (delete-trailing-whitespace))))
+(add-hook 'before-save-hook 'ba-delete-trailing-whitespace)
 (add-hook 'after-save-hook  'executable-make-buffer-file-executable-if-script-p)
 
 ;; Interactive DO - buffers autocomplete <3
@@ -97,3 +101,6 @@
 ;; Where to save the custom variables
 (setq custom-file (concat emacs-d-root "custom.el"))
 (load custom-file)
+
+;; Show a clock
+(display-time)

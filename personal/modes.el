@@ -13,11 +13,6 @@
   (add-path "utils")
 )
 
-;; Color theme
-;; (require 'color-theme)
-;; (color-theme-initialize)
-;; (color-theme-ld-dark)
-
 ;; Javascript mode
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -25,6 +20,10 @@
 ;; CSS-mode
 (autoload 'css-mode "css-mode-simple" nil t)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+
+;; Markdown-mode
+(autoload 'markdown-mode "markdown-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;; YAML-mode
 (autoload 'yaml-mode "yaml-mode" nil t)
@@ -47,6 +46,7 @@
                             (local-set-key [f1] 'ri)
                             (local-set-key [f4] 'ri-ruby-show-args)
                             (require 'rvm)
+                            (rvm-use-default)
                             (require 'rhtml-mode)
                             (require 'rinari) ;; Rails minor mode and Ruby utilities
                             ;; Autotest

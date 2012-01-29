@@ -6,8 +6,11 @@
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
  '(column-number-mode t)
+ '(display-time-24hr-format t)
+ '(markdown-italic-underscore t)
  '(show-paren-mode t)
- '(transient-mark-mode nil))
+ '(transient-mark-mode nil)
+ '(markdown-xhtml-header-content "<meta http-equiv='content-type' content='text/html; charset=utf-8' />"))
 
 (if (and (not (eq system-type 'darwin)) (not (eq window-system nil)))
     (custom-set-faces
@@ -17,8 +20,10 @@
   ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "Droid Sans Mono"))))))
 
-(if (or (eq window-system nil) (eq system-type 'darwin))
+(if (not (or (eq window-system nil) (eq system-type 'darwin)))
     (progn
-      (require 'color-theme)
-      (color-theme-initialize)
-      (color-theme-ld-dark)))
+      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      (color-theme-sunburst)))
+      ;;(require 'color-theme)
+      ;;(color-theme-initialize)
+      ;;(color-theme-ld-dark)))
