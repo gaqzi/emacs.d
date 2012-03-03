@@ -141,3 +141,6 @@
 (autoload 'feature-mode "feature-mode" "Major mode for editing cucumber features" t)
 (setq auto-mode-alist
       (append '(("\\.feature$" . feature-mode)) auto-mode-alist))
+
+;; Mediawiki editing mode (wikipedia etc)
+;(require 'mediawiki)

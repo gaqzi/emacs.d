@@ -104,3 +104,8 @@
 
 ;; Show a clock
 (display-time)
+
+;; edit-server used for edit in emacs for chrome
+;; https://chrome.google.com/extensions/detail/ljobjlafonikaiipfkggjbhkghgicgoh
+(when (require 'edit-server nil t)
+  (edit-server-start))
