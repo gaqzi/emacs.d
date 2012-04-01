@@ -66,7 +66,7 @@
   (unless (string-equal mode-name "Markdown")
     (progn
       (delete-trailing-whitespace))))
-(add-hook 'before-save-hook 'ba-delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook  'executable-make-buffer-file-executable-if-script-p)
 
 ;; Interactive DO - buffers autocomplete <3
