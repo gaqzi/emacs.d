@@ -9,8 +9,8 @@ echo "Initializing submodules"
 git submodule init
 git submodule update
 
-#echo "Initializing 'modes/ruby/rinari' submodules"
-#(cd modes/ruby/rinari ; git submodule init && git submodule update)
+echo "Initializing 'modes/ruby/rinari' submodules"
+(cd modes/ruby/rinari ; git submodule init && git submodule update)
 
 echo "Byte-compiling .el-files"
 files=(modes/js2.el modes/ruby/cucumber/feature-mode.el)
