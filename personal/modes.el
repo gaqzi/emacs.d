@@ -10,8 +10,12 @@
   (add-path "modes/django")
   (add-path "modes/scala")
   (add-path "modes/haskell")
+;  (add-path "modes/nxhtml")
   (add-path "utils")
 )
+
+; nxhtml-mode
+;(load (concat emacs-d-root "modes/nxhtml/autostart.el"))
 
 ;; Javascript mode
 (autoload 'js2-mode "js2" nil t)
@@ -61,9 +65,11 @@
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(haml\\|hml\\)$" . haml-mode))
 
-;; SASS-mode
+;; SASS/SCSS-mode
 (autoload 'sass-mode "sass-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
+(autoload 'scss-mode "scss-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
