@@ -19,18 +19,27 @@
  '(weblogger-server-url "http://sanitarium.se/blog/")
  '(weblogger-server-username "admin"))
 
+(if (not (eq window-system nil))
+    (progn
+      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      (color-theme-sunburst)))
+
 ;; Non Mac OS X GUI settings
 (if (not (or (eq window-system nil) (eq system-type 'darwin)))
     (progn
-      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
-      (color-theme-sunburst)
-      ;;(require 'color-theme)
-      ;;(color-theme-initialize)
-      ;;(color-theme-ld-dark)))
+      ;; (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      ;; (color-theme-sunburst)
       (custom-set-faces
        '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "Droid Sans Mono")))))))
 
 ;; OSX GUI Settings
 (if (or (not (eq window-system nil)) (eq system-type 'darwin))
-    (custom-set-faces
-     '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco"))))))
+    (progn
+      (custom-set-faces
+       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
+      (setenv "PATH" (concat "/Users/ba/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+      (add-to-list 'exec-path "/usr/local/sbin")
+      (add-to-list 'exec-path "/usr/local/bin")
+      (add-to-list 'exec-path "/usr/local/mysql/bin")
+      (add-to-list 'exec-path "/Users/ba/bin")
+      (add-to-list 'exec-path "/Users/ba/.rvm/bin")))
