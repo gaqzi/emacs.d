@@ -10,6 +10,7 @@
   (add-path "modes/django")
   (add-path "modes/scala")
   (add-path "modes/haskell")
+  (add-path "modes/js2")
 ;  (add-path "modes/nxhtml")
   (add-path "utils")
 )

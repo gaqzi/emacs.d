@@ -11,6 +11,7 @@
  '(edit-server-url-major-mode-alist (quote (("sanitarium.se" . markdown-mode))))
  '(markdown-italic-underscore t)
  '(markdown-xhtml-header-content "<meta http-equiv='content-type' content='text/html; charset=utf-8' />")
+ '(mumamo-chunk-coloring 9999)
  '(show-paren-mode t)
  '(transient-mark-mode nil)
  '(weblogger-config-alist (quote (("sanitarium.se" "http://sanitarium.se/blog/xmlrpc.php" "admin" "" "1"))))
@@ -18,22 +19,29 @@
  '(weblogger-server-url "http://sanitarium.se/blog/")
  '(weblogger-server-username "admin"))
 
+(if (not (eq window-system nil))
+    (progn
+      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      (color-theme-sunburst)))
+
 ;; Non Mac OS X GUI settings
 (if (not (or (eq window-system nil) (eq system-type 'darwin)))
     (progn
-      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
-      (color-theme-sunburst)
-      ;;(require 'color-theme)
-      ;;(color-theme-initialize)
-      ;;(color-theme-ld-dark)))
+      ;; (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      ;; (color-theme-sunburst)
       (custom-set-faces
        '(default ((t (:inherit nil :stipple nil :background "#111" :foreground "#ddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))))
 
   ;; OSX GUI Settings
   (if (or (not (eq window-system nil)) (eq system-type 'darwin))
-      (custom-set-faces
-       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco"))))))
-)
-
-
-
+      (progn
+        (custom-set-faces
+         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
+        (setenv "PATH" (concat "/Users/ba/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+        (add-to-list 'exec-path "/usr/local/sbin")
+        (add-to-list 'exec-path "/usr/local/bin")
+        (add-to-list 'exec-path "/usr/local/mysql/bin")
+        (add-to-list 'exec-path "/Users/ba/bin")
+        (add-to-list 'exec-path "/Users/ba/.rvm/bin")
+        (custom-set-faces
+         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco"))))))))
