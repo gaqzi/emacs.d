@@ -15,6 +15,7 @@
 ;; Rerun keyboard macro on F5
 (global-set-key [f5]       'call-last-kbd-macro)
 (global-set-key "\M-/"     'hippie-expand)
+(global-set-key "\C-xg"   'magit-status)
 
 ;; Loose the UI
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -47,6 +48,8 @@
 (show-paren-mode t)
 ;; Automatic abbrevation expand!
 ;(setq default-abbrev-mode t)
+;; Don't do audiable bells
+(setq ring-bell-function 'ignore)
 
 ;; A tab is 4 spaces and don't insert tabs unless the given mode
 ;; forces it.

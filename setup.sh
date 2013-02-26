@@ -21,3 +21,9 @@ while [ "$i" -lt "${#files[@]}" ] ; do
 done
 
 (cd modes/js2/ && make)
+
+# Python stuff
+echo "Remember to install python binaries:"
+echo <<EOF
+sudo pip install -e 'git://github.com/gaqzi/flake8.git#egg=flake8-1.5'
+EOF

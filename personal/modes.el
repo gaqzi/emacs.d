@@ -11,7 +11,12 @@
   (add-path "modes/scala")
   (add-path "modes/haskell")
   (add-path "modes/js2")
+  (add-path "modes/python/")
+  (add-path "modes/python/emacs-for-python/")
+;  (add-path "modes/python/python-mode/")
+  (add-path "modes/python/Pymacs")
 ;  (add-path "modes/nxhtml")
+  (add-path "magit")
   (add-path "utils")
 )
 
@@ -23,12 +28,22 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; CSS-mode
-(autoload 'css-mode "css-mode-simple" nil t)
+;(autoload 'css-mode "css-mode-simple" nil t)
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
 ;; Markdown-mode
 (autoload 'markdown-mode "markdown-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
+;; Loads different major mode when between certain tags in HTML docs
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (js-mode "<script ?\\(\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]\\)*>" "</script>")
+                  (less-css-mode "<style rel=\"stylesheet/less\"[^>]*>" "</style>")
+                  (css-mode "<style ?\\(type=\"text/css\"[^>]\\)*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
 
 ;; YAML-mode
 (autoload 'yaml-mode "yaml-mode" nil t)
@@ -72,6 +87,11 @@
 (autoload 'scss-mode "scss-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 
+;; less css
+(autoload 'less-css-mode "less-css-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
+(setq less-css-compile-at-save t)
+
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
   "Command to compile current buffer file based on the major mode" t)
@@ -89,10 +109,10 @@
 ;; The snippets support just make it global - snippets are great when
 ;; they can be used!
 (require 'yasnippet)
-(yas/initialize)
-(yas/load-directory (concat emacs-d-root "snippet/snippets/"))
-(yas/load-directory (concat emacs-d-root "snippet/rails-snippets/"))
-(yas/load-directory (concat emacs-d-root "snippet/my-snippets/"))
+(yas-global-mode 1)
+;; (yas/load-directory (concat emacs-d-root "snippet/snippets/"))
+;; (yas/load-directory (concat emacs-d-root "snippet/rails-snippets/"))
+;; (yas/load-directory (concat emacs-d-root "snippet/my-snippets/"))
 
 ;; Uniquify the buffer names by adding the path instead of file<2> file<3> etc
 (require 'uniquify)
@@ -151,3 +171,47 @@
 
 ;; Mediawiki editing mode (wikipedia etc)
 ;(require 'mediawiki)
+
+;; Python stuff
+; Override emacs built-in python.el with pythons official python-mode
+;; (setq py-install-directory (concat emacs-d-root "modes/python/python-mode/"))
+;; (require 'python-mode)
+
+;(require 'epy-init)
+(defconst epy-install-dir
+  (file-name-directory (or load-file-name
+                           (when (boundp 'bytecomp-filename) bytecomp-filename)
+                           buffer-file-name))
+  "Installation directory of emacs-for-python"
+)
+
+(add-to-list 'load-path epy-install-dir)
+(require 'epy-setup)
+(require 'epy-python)
+(require 'epy-editing)
+(require 'epy-nose)
+(require 'epy-bindings)
+
+(epy-setup-ipython)
+(epy-setup-checker "flake8 --ignore=E701 %f")
+
+(add-hook 'python-mode-hook (lambda ()
+                              (flymake-mode)))
+
+;;                             (require 'epy-init)
+;;                             (epy-setup-checker "flake8 %f")
+;;                             (flymake-mode)))
+
+; Don't pair parens
+(setq skeleton-pair nil)
+
+;; highlight TODO, FIXME etc
+(require 'fic-mode)
+(defun add-something-to-mode-hooks (mode-list something)
+  "helper function to add a callback to multiple hooks"
+  (dolist (mode mode-list)
+    (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
+
+(add-something-to-mode-hooks '(python ruby css js2 js) 'turn-on-fic-mode)
+
+(require 'magit)
