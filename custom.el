@@ -1,8 +1,8 @@
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
  '(column-number-mode t)
@@ -17,7 +17,6 @@
  '(ropemacs-separate-doc-buffer (quote f))
  '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t)
- '(tool-bar-mode nil)
  '(transient-mark-mode nil)
  '(weblogger-config-alist (quote (("sanitarium.se" "http://sanitarium.se/blog/xmlrpc.php" "admin" "" "1"))))
  '(weblogger-edit-mode (quote markdown-mode))
@@ -35,22 +34,18 @@
       ;; (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
       ;; (color-theme-sunburst)
       (custom-set-faces
-       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "Droid Sans Mono")))))))
+       '(default ((t (:inherit nil :stipple nil :background "#111" :foreground "#ddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))))
 
-;; OSX GUI Settings
-(if (or (not (eq window-system nil)) (eq system-type 'darwin))
-    (progn
-      (custom-set-faces
-       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
-      (setenv "PATH" (concat "/Users/ba/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
-      (add-to-list 'exec-path "/usr/local/sbin")
-      (add-to-list 'exec-path "/usr/local/bin")
-      (add-to-list 'exec-path "/usr/local/mysql/bin")
-      (add-to-list 'exec-path "/Users/ba/bin")
-      (add-to-list 'exec-path "/Users/ba/.rvm/bin")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
+  ;; OSX GUI Settings
+  (if (or (not (eq window-system nil)) (eq system-type 'darwin))
+      (progn
+        (custom-set-faces
+         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
+        (setenv "PATH" (concat "/Users/ba/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+        (add-to-list 'exec-path "/usr/local/sbin")
+        (add-to-list 'exec-path "/usr/local/bin")
+        (add-to-list 'exec-path "/usr/local/mysql/bin")
+        (add-to-list 'exec-path "/Users/ba/bin")
+        (add-to-list 'exec-path "/Users/ba/.rvm/bin")
+        (custom-set-faces
+         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco"))))))))
