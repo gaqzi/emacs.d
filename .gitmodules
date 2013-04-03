@@ -19,3 +19,9 @@
 [submodule "modes/helms"]
 	path = modes/helms
 	url = git://github.com/emacs-helm/helm.git
+[submodule "modules/python/Pymacs"]
+	path = modules/python/Pymacs
+	url = git://github.com/pinard/Pymacs.git
+[submodule "modes/python/emacs-for-python"]
+	path = modes/python/emacs-for-python
+	url = git://github.com/gabrielelanaro/emacs-for-python.git
