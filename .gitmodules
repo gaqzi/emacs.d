@@ -13,12 +13,6 @@
 [submodule "modes/js2"]
 	path = modes/js2
 	url = git://github.com/mooz/js2-mode.git
-[submodule "modes/helm"]
-	path = modes/helm
-	url = git://github.com/emacs-helm/helm.git
-[submodule "modes/helms"]
-	path = modes/helms
-	url = git://github.com/emacs-helm/helm.git
 [submodule "modules/python/Pymacs"]
 	path = modules/python/Pymacs
 	url = git://github.com/pinard/Pymacs.git
