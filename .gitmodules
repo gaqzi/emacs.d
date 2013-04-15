@@ -13,3 +13,6 @@
 [submodule "modes/js2"]
 	path = modes/js2
 	url = git://github.com/mooz/js2-mode.git
+[submodule "modes/python/emacs-for-python"]
+	path = modes/python/emacs-for-python
+	url = git://github.com/gabrielelanaro/emacs-for-python.git

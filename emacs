@@ -5,6 +5,29 @@
 
 (require 'cl)
 (cd emacs-root) ; Start emacs from my home and nowhere else!
+
+;; Loose the UI
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; add all the elisp directories under ~/.emacs.d to my load path
+(labels ((add-path (p)
+		   (add-to-list 'load-path
+				(concat emacs-d-root p))))
+  (add-path "personal")    ;; My own configuration and stuff
+  (add-path "color-theme")
+  (add-path "snippet")
+  (add-path "testing")
+  (add-path "modes")
+  )
+
+(load-library "modes") ;; configuration for modes
+
+;; Where to save the custom variables
+(setq custom-file (concat emacs-d-root "custom.el"))
+(load custom-file)
+
 ;; M-x with C-x C-m
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -16,11 +39,6 @@
 (global-set-key [f5]       'call-last-kbd-macro)
 (global-set-key "\M-/"     'hippie-expand)
 (global-set-key "\C-xg"   'magit-status)
-
-;; Loose the UI
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; lots of perrty colors!
 (defconst font-lock-maximum-decoration t)
@@ -84,26 +102,9 @@
 (set-selection-coding-system    'utf-8)
 (prefer-coding-system           'utf-8)
 
-;; add all the elisp directories under ~/.emacs.d to my load path
-(labels ((add-path (p)
-		   (add-to-list 'load-path
-				(concat emacs-d-root p))))
-  (add-path "personal")    ;; My own configuration and stuff
-  (add-path "color-theme")
-  (add-path "snippet")
-  (add-path "testing")
-  (add-path "modes")
-  )
-
-(load-library "modes") ;; configuration for modes
-
 (require 'info)
 (setq Info-directory-list (cons (concat emacs-d-root "info/")
 				Info-default-directory-list))
-
-;; Where to save the custom variables
-(setq custom-file (concat emacs-d-root "custom.el"))
-(load custom-file)
 
 ;; Show a clock
 (display-time)

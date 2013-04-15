@@ -1,6 +1,6 @@
 (labels ((add-path (p)
-		   (add-to-list 'load-path
-				(concat emacs-d-root p))))
+   (add-to-list 'load-path
+     (concat emacs-d-root p))))
   (add-path "modes/ruby")
   (add-path "modes/ruby/rhtml")
   (add-path "modes/ruby/rinari")
@@ -108,8 +108,8 @@
 
 ;; The snippets support just make it global - snippets are great when
 ;; they can be used!
-(require 'yasnippet)
-(yas-global-mode 1)
+;(require 'yasnippet)
+;(yas-global-mode 1)
 ;; (yas/load-directory (concat emacs-d-root "snippet/snippets/"))
 ;; (yas/load-directory (concat emacs-d-root "snippet/rails-snippets/"))
 ;; (yas/load-directory (concat emacs-d-root "snippet/my-snippets/"))
