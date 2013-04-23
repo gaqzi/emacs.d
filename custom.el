@@ -4,7 +4,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(autotest-use-ui t)
- '(blink-cursor-mode nil)
+ '(blink-cursor-mode -1)
  '(column-number-mode t)
  '(display-time-24hr-format t)
  '(display-time-mode t)

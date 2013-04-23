@@ -195,8 +195,8 @@
 (epy-setup-ipython)
 (epy-setup-checker "flake8 --ignore=E701 %f")
 
-(add-hook 'python-mode-hook (lambda ()
-                              (flymake-mode)))
+;; (add-hook 'python-mode-hook (lambda ()
+;;                               (flymake-mode-on)))
 
 ;;                             (require 'epy-init)
 ;;                             (epy-setup-checker "flake8 %f")
