@@ -14,9 +14,7 @@
   (add-path "modes/python/")
   (add-path "modes/python/emacs-for-python/")
 ;  (add-path "modes/python/python-mode/")
-  (add-path "modes/python/Pymacs")
 ;  (add-path "modes/nxhtml")
-  (add-path "magit")
   (add-path "utils")
 )
 
@@ -214,4 +212,4 @@
 
 (add-something-to-mode-hooks '(python ruby css js2 js) 'turn-on-fic-mode)
 
-(require 'magit)
+; (require 'magit)
