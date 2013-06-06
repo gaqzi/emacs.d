@@ -53,6 +53,7 @@
 (setq kept-new-versions 6)
 (setq kept-old-versions 2)
 (setq version-control t)
+(setq user-mail-address "ba@sanitarium.se")
 ;; No startup message
 (setq inhibit-startup-message t)
 ;; Comment empty lines when commenting a region

@@ -17,6 +17,7 @@
 ;  (add-path "modes/nxhtml")
   (add-path "utils")
 )
+(load-file (concat emacs-d-root "personal/region-commands.el"))
 
 ; nxhtml-mode
 ;(load (concat emacs-d-root "modes/nxhtml/autostart.el"))
