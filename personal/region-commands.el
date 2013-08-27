@@ -24,7 +24,7 @@
 (defun ba-translate-block-marker ()
   "Wraps a region in blocktrans"
   (interactive)
-  (put-in-lft-rit "{% blocktrans %}" "{% endblocktrans %}")
+  (put-in-lft-rit "{% blocktrans %}" "{% endblocktrans %}"))
 
 (defun ba-static-marker ()
   "Inserts static around region or at point, places point at first quote"
@@ -34,6 +34,6 @@
       (put-in-lft-rit "{% static \"" "\" %}")
       (goto-char (+ strt 11)))))
 
-(global-set-key (kbd "C-x r t") 'ba-translate-marker)
-(global-set-key (kbd "C-x r d") 'ba-translate-block-marker)
-(global-set-key (kbd "C-x r s") 'ba-static-marker)
+(global-set-key (kbd "C-. r t") 'ba-translate-marker)
+(global-set-key (kbd "C-. r d") 'ba-translate-block-marker)
+(global-set-key (kbd "C-. r s") 'ba-static-marker)

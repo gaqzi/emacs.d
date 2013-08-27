@@ -10,9 +10,9 @@
   (add-path "modes/django")
   (add-path "modes/scala")
   (add-path "modes/haskell")
-  (add-path "modes/js2")
+;  (add-path "modes/js2")
   (add-path "modes/python/")
-  (add-path "modes/python/emacs-for-python/")
+;  (add-path "modes/python/emacs-for-python/")
 ;  (add-path "modes/python/python-mode/")
 ;  (add-path "modes/nxhtml")
   (add-path "utils")
@@ -23,7 +23,6 @@
 ;(load (concat emacs-d-root "modes/nxhtml/autostart.el"))
 
 ;; Javascript mode
-(autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; CSS-mode
@@ -177,22 +176,23 @@
 ;; (require 'python-mode)
 
 ;(require 'epy-init)
-(defconst epy-install-dir
-  (file-name-directory (or load-file-name
-                           (when (boundp 'bytecomp-filename) bytecomp-filename)
-                           buffer-file-name))
-  "Installation directory of emacs-for-python"
-)
 
-(add-to-list 'load-path epy-install-dir)
-(require 'epy-setup)
-(require 'epy-python)
-(require 'epy-editing)
-(require 'epy-nose)
-(require 'epy-bindings)
-
-(epy-setup-ipython)
-(epy-setup-checker "flake8 --ignore=E701 %f")
+;; (defconst epy-install-dir
+;;   (file-name-directory (or load-file-name
+;;                            (when (boundp 'bytecomp-filename) bytecomp-filename)
+;;                            buffer-file-name))
+;;   "Installation directory of emacs-for-python"
+;; )
+;;
+;; (add-to-list 'load-path epy-install-dir)
+;; (require 'epy-setup)
+;; (require 'epy-python)
+;; (require 'epy-editing)
+;; (require 'epy-nose)
+;; (require 'epy-bindings)
+;;
+;; (epy-setup-ipython)
+;; (epy-setup-checker "flake8 --ignore=E701 %f")
 
 ;; (add-hook 'python-mode-hook (lambda ()
 ;;                               (flymake-mode-on)))
@@ -214,3 +214,9 @@
 (add-something-to-mode-hooks '(python ruby css js2 js) 'turn-on-fic-mode)
 
 ; (require 'magit)
+
+; Some git shortcuts
+(global-set-key (kbd "C-. g f") 'github-browse-file)
+(global-set-key (kbd "C-. g b") 'github-browse-file-blame)
+
+(elpy-enable)
