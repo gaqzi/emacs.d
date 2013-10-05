@@ -15,6 +15,7 @@
  '(markdown-italic-underscore t)
  '(markdown-xhtml-header-content "<meta http-equiv='content-type' content='text/html; charset=utf-8' />")
  '(mumamo-chunk-coloring 9999)
+ '(python-check-command "flake8")
  '(python-indent-string-contents t)
  '(python-shell-virtualenv-path nil)
  '(ropemacs-separate-doc-buffer (quote f))

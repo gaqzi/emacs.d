@@ -140,25 +140,6 @@
 (setq c-default-style "bsd"
       c-basic-offset 4)
 
-;; C#
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-(add-hook 'csharp-mode-hook (lambda()
-                              (setq c-tab-always-indent t
-                                    indent-tabs-mode t)))
-;; Scala
-(require 'scala-mode-auto)
-
-;; Haskell
-(autoload 'haskell-mode "haskell-mode" "Major mode for editing Haskell" t)
-(setq auto-mode-alist
-      (append '(("\\.hs$" . haskell-mode)) auto-mode-alist))
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
 (autoload 'vcl-mode "vcl-mode" "Major mode for editing Varnish Configuration Language" t)
 (setq auto-mode-alist
       (append '(("\\.vcl$" . vcl-mode)) auto-mode-alist))
@@ -205,13 +186,13 @@
 (setq skeleton-pair nil)
 
 ;; highlight TODO, FIXME etc
-(require 'fic-mode)
+;(require 'fic-mode)
 (defun add-something-to-mode-hooks (mode-list something)
   "helper function to add a callback to multiple hooks"
   (dolist (mode mode-list)
     (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
 
-(add-something-to-mode-hooks '(python ruby css js2 js) 'turn-on-fic-mode)
+(add-something-to-mode-hooks '(python ruby css js2 js) 'fic-ext-mode)
 
 ; (require 'magit)
 
