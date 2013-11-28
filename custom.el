@@ -11,6 +11,8 @@
  '(display-time-mode t)
  '(edit-server-url-major-mode-alist (quote (("sanitarium.se" . markdown-mode))))
  '(elpy-default-minor-modes (quote (eldoc-mode flymake-mode flymake-cursor-mode highlight-indentation-mode yas-minor-mode auto-complete-mode)))
+ '(flyspell-default-dictionary nil)
+ '(ispell-program-name "")
  '(js2-basic-offset 2)
  '(markdown-italic-underscore t)
  '(markdown-xhtml-header-content "<meta http-equiv='content-type' content='text/html; charset=utf-8' />")
@@ -47,7 +49,7 @@
       (progn
         (custom-set-faces
          '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
-        (setenv "PATH" (concat "/Users/ba/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+        (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
         (add-to-list 'exec-path "/usr/local/sbin")
         (add-to-list 'exec-path "/usr/local/bin")
         (add-to-list 'exec-path "/usr/local/mysql/bin")

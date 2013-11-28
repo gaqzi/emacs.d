@@ -80,10 +80,10 @@
 ;; Save hooks
 ; Don't remove trailing whitespace in certain modes
 (defun ba-delete-trailing-whitespace ()
-  (unless (string-equal mode-name "Markdown")
+  (unless (string-equal major-mode "markdown-mode")
     (progn
       (delete-trailing-whitespace))))
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'ba-delete-trailing-whitespace)
 (add-hook 'after-save-hook  'executable-make-buffer-file-executable-if-script-p)
 
 ;; Interactive DO - buffers autocomplete <3

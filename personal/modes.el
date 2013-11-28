@@ -24,6 +24,7 @@
 
 ;; Javascript mode
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook 'flymake-jshint-load)
 
 ;; CSS-mode
 ;(autoload 'css-mode "css-mode-simple" nil t)
@@ -46,8 +47,10 @@
 ;; YAML-mode
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(yml\\|yaml\\)$" . yaml-mode))
+(add-hook 'yaml-mode-hook 'flymake-yaml-load)
 ;; Ruby hooks
 (add-hook 'ruby-mode-hook (lambda ()
+                            (flymake-ruby-load)
                             ;; Rcodetools
                             (require 'rcodetools)
                             (local-set-key "\M-\C-i" 'rct-complete-symbol)
@@ -136,6 +139,9 @@
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("zshrc$" . shell-script-mode))
 
+;; Shell flymake
+(add-hook 'sh-set-shell-hook 'flymake-shell-load)
+
 ;; C
 (setq c-default-style "bsd"
       c-basic-offset 4)
@@ -175,8 +181,8 @@
 ;; (epy-setup-ipython)
 ;; (epy-setup-checker "flake8 --ignore=E701 %f")
 
-;; (add-hook 'python-mode-hook (lambda ()
-;;                               (flymake-mode-on)))
+(add-hook 'python-mode-hook (lambda ()
+                              (load-file (concat emacs-d-root "snippet/snippet-helpers.el"))))
 
 ;;                             (require 'epy-init)
 ;;                             (epy-setup-checker "flake8 %f")
@@ -194,6 +200,9 @@
 
 (add-something-to-mode-hooks '(python ruby css js2 js) 'fic-ext-mode)
 
+;; flymake json
+(add-hook 'json-mode 'flymake-json-load)
+
 ; (require 'magit)
 
 ; Some git shortcuts
@@ -201,3 +210,6 @@
 (global-set-key (kbd "C-. g b") 'github-browse-file-blame)
 
 (elpy-enable)
+
+;; Go
+(add-hook 'go-mode-hook 'go-eldoc-setup)
