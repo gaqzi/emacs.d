@@ -32,7 +32,7 @@
 
 ;; Markdown-mode
 (autoload 'markdown-mode "markdown-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(markdown\\|md\\)$" . markdown-mode))
 
 ;; Loads different major mode when between certain tags in HTML docs
 (require 'multi-web-mode)
