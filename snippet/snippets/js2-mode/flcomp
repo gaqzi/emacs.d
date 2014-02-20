@@ -1,0 +1,15 @@
+# name: flight defineComponent ...
+# key: flcomp
+# --
+define(function(require) {
+  'use strict';
+  var defineComponent = require('flight/lib/component');
+
+  return defineComponent(${1:componentName});
+
+  function $1() {
+    ${2:this.after('initialize', function() {
+      $0
+    });}
+  }
+});

@@ -31,7 +31,7 @@
   (interactive)
   (let ((strt (point)))
     (progn
-      (put-in-lft-rit "{% static \"" "\" %}")
+      (put-in-lft-rit "{% static '" "' %}")
       (goto-char (+ strt 11)))))
 
 (global-set-key (kbd "C-. r t") 'ba-translate-marker)

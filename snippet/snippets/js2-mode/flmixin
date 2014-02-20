@@ -1,0 +1,11 @@
+# name: flight mixin ...
+# key: flmixin
+# --
+define(function(require) {
+  'use strict';
+  return ${1:mixinName};
+
+  function $1() {
+    $0
+  }
+});

@@ -111,6 +111,4 @@
   (edit-server-start))
 
 (blink-cursor-mode -1)
-
-(add-to-list 'package-archives
-              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(yas-global-mode 1)

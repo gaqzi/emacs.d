@@ -1,12 +1,12 @@
 (labels ((add-path (p)
    (add-to-list 'load-path
      (concat emacs-d-root p))))
-  (add-path "modes/ruby")
-  (add-path "modes/ruby/rhtml")
-  (add-path "modes/ruby/rinari")
-  (add-path "modes/ruby/rinari/utils")
-  (add-path "modes/ruby/rvm")
-  (add-path "modes/ruby/cucumber")
+  ;; (add-path "modes/ruby")
+  ;; (add-path "modes/ruby/rhtml")
+  ;; (add-path "modes/ruby/rinari")
+  ;; (add-path "modes/ruby/rinari/utils")
+  ;; (add-path "modes/ruby/rvm")
+  ;; (add-path "modes/ruby/cucumber")
   (add-path "modes/django")
   (add-path "modes/scala")
   (add-path "modes/haskell")
@@ -50,33 +50,33 @@
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
 ;; Ruby hooks
 (add-hook 'ruby-mode-hook (lambda ()
-                            (flymake-ruby-load)
-                            ;; Rcodetools
-                            (require 'rcodetools)
-                            (local-set-key "\M-\C-i" 'rct-complete-symbol)
-;                            (local-set-key [f2] 'xmp)
+                            (flymake-ruby-load)))
+;;                             ;; Rcodetools
+;;                             (require 'rcodetools)
+;;                             (local-set-key "\M-\C-i" 'rct-complete-symbol)
+;;                                         ;                            (local-set-key [f2] 'xmp)
                             ;; IRB
-                            (require 'inf-ruby)
-                            (inf-ruby-keys)
-                            (local-set-key "\C-c\C-e" 'ruby-insert-end)
-                            ;; ri support
-                            (setq ri-ruby-script
-                                  (concat emacs-d-root "modes/ruby/ri-emacs.rb"))
-                            (autoload 'ri
-                              (concat emacs-d-root "modes/ruby/ri-ruby") nil t)
-                            (local-set-key [f1] 'ri)
-                            (local-set-key [f4] 'ri-ruby-show-args)
-                            (require 'rvm)
-                            (rvm-use-default)
-                            (require 'rhtml-mode)
-                            (require 'rinari) ;; Rails minor mode and Ruby utilities
-                            ;; Autotest
-                            (if (not (eq window-system nil))
-                                (progn
-				  (require 'unit-test)
-				  (require 'autotest)
-				  (setq autotest-use-ui t)))))
-(add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\)" . ruby-mode))
+                            ;; (require 'inf-ruby)
+                            ;; (inf-ruby-keys)
+                            ;; (local-set-key "\C-c\C-e" 'ruby-insert-end)))
+;;                             ;; ri support
+;;                             (setq ri-ruby-script
+;;                                   (concat emacs-d-root "modes/ruby/ri-emacs.rb"))
+;;                             (autoload 'ri
+;;                               (concat emacs-d-root "modes/ruby/ri-ruby") nil t)
+;;                             (local-set-key [f1] 'ri)
+;;                             (local-set-key [f4] 'ri-ruby-show-args)
+;;                             (require 'rvm)
+;;                             (rvm-use-default)
+;;                             (require 'rhtml-mode)
+;;                             (require 'rinari) ;; Rails minor mode and Ruby utilities
+;;                             ;; Autotest
+;;                             (if (not (eq window-system nil))
+;;                                 (progn
+;;                                   (require 'unit-test)
+;;                                   (require 'autotest)
+;;                                   (setq autotest-use-ui t)))))
+(add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\|Vagrantfile\\)" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . ruby-mode))
 ;; HAML-mode
 (autoload 'haml-mode "haml-mode" nil t)
@@ -202,6 +202,8 @@
 
 ;; flymake json
 (add-hook 'json-mode 'flymake-json-load)
+(add-to-list 'auto-mode-alist '("\\(.bowerrc\\)" . jfon-mode))
+
 
 ; (require 'magit)
 
@@ -213,3 +215,23 @@
 
 ;; Go
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+;; Folding mode
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(define-key global-map (kbd "C-'") 'hs-toggle-hiding)
+
+(defvar my-hs-hide nil "Current state of hideshow for toggling all.")
+(defun my-hs-toggle-all () "Toggle hideshow all."
+  (interactive)
+  (setq my-hs-hide (not my-hs-hide))
+  (if my-hs-hide
+      (hs-hide-all)
+    (hs-show-all)))
+(define-key global-map (kbd "C-. '") 'my-hs-toggle-all)
+
+;; React JSX
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+(autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+
+;; flymake should show text on cursor
+(eval-after-load 'flymake '(require 'flymake-cursor))
