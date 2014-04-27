@@ -1,6 +1,0 @@
-#name : /usr/bin/env ruby -w utf-8
-# --
-#!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
-$VERBOSE = true
-$KCODE = 'u'

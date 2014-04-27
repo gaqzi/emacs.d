@@ -23,4 +23,4 @@ about a package, press "RET" on a package line.  To download a
 package, press "d" (don't forget to set `aurel-download-directory'
 before).
 
-For full description, see <http://github.com/alezost/aurel>.
+For full description, see <https://github.com/alezost/aurel>.

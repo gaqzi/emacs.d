@@ -10,7 +10,6 @@
 				(concat emacs-d-root p))))
   (add-path "personal")    ;; My own configuration and stuff
   (add-path "color-theme")
-  (add-path "snippet")
   (add-path "testing")
   (add-path "modes")
   )
@@ -111,4 +110,3 @@
   (edit-server-start))
 
 (blink-cursor-mode -1)
-(yas-global-mode 1)
