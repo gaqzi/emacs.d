@@ -1,0 +1,21 @@
+(defun py-prev-def-name ()
+  (save-excursion
+    (if (re-search-backward "def +\\(.+?\\)(" nil t)
+        (match-string 1)
+      )
+    )
+  )
+(defun py-prev-def-args ()
+  (save-excursion
+    (if (re-search-backward "def +\\(.+?\\)( *self *,? *\\(.*\\))" nil t)
+        (match-string 2)
+      )
+    )
+  )
+(defun py-prev-class-name ()
+  (save-excursion
+    (if (re-search-backward "class +\\(.+?\\) *[(:]" nil t)
+        (match-string 1)
+      )
+    )
+  )
