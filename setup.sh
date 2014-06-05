@@ -20,8 +20,6 @@ while [ "$i" -lt "${#files[@]}" ] ; do
     i=`expr $i + 1`
 done
 
-(cd modes/js2/ && make)
-
 # Python stuff
 echo "Remember to install python binaries:"
 echo <<EOF

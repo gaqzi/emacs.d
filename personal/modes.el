@@ -59,7 +59,7 @@
                                                           default-directory ".jshintrc")))
                            (flymake-jshint-load)
                            (ac-js2-mode)))
-; (add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; Loads different major mode when between certain tags in HTML docs
 ;(require 'multi-web-mode)
@@ -69,7 +69,7 @@
                   (less-css-mode "<style rel=\"stylesheet/less\"[^>]*>" "</style>")
                   (css-mode "<style ?\\(type=\"text/css\"[^>]\\)*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
-(multi-web-global-mode 1)
+;(multi-web-global-mode 1)
 
 ;; YAML-mode
 (add-to-list 'auto-mode-alist '("\\.\\(yml\\|yaml\\)$" . yaml-mode))
