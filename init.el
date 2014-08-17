@@ -90,8 +90,8 @@
 (ido-mode t)
 
 ;; Set default encoding UTF-8
-(setq set-language-environment "UTF-8")
-(setq locale-coding-system      'utf-8)
+(setq set-language-environment "UTF-8"
+      locale-coding-system      'utf-8)
 (set-terminal-coding-system     'utf-8)
 (set-keyboard-coding-system     'utf-8)
 (set-selection-coding-system    'utf-8)
@@ -104,9 +104,18 @@
 ;; Show a clock
 (display-time)
 
-;; edit-server used for edit in emacs for chrome
-;; https://chrome.google.com/extensions/detail/ljobjlafonikaiipfkggjbhkghgicgoh
-(when (require 'edit-server nil t)
-  (edit-server-start))
-
 (blink-cursor-mode -1)
+
+;; Enable emacsclient
+(server-start)
+
+;; smart electric pairs
+(electric-pair-mode)
+;; (setq electric-pair-preserve-balance t)
+
+;; Subword mode, TreatThisWordAsSeveral I'm not sure this is a good
+;; idea to keep on for every mode, but I imagine at least some
+;; programming modes it would be awesome for.
+;;
+;; Will try it on globally for now
+(subword-mode)
