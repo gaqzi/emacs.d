@@ -27,7 +27,6 @@
                      flymake-jshint
                      flymake-json
                      flymake-less
-                     flymake-ruby
                      flymake-shell
                      flymake-yaml
                      fold-dwim
@@ -64,12 +63,19 @@
                      python-django
                      python-mode
                      pyvenv
+                     vcl-mode
+                     yaml-mode
+                     yasnippet
+
+                     ; Ruby
+                     enh-ruby-mode
+                     robe
+                     yard-mode
                      rspec-mode
                      ruby-mode
                      ruby-tools
-                     vcl-mode
-                     yaml-mode
-                     yasnippet))
+                     flymake-ruby
+                     ))
 
 (require 'package)
 (add-to-list 'package-archives

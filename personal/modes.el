@@ -74,36 +74,19 @@
 ;; YAML-mode
 (add-to-list 'auto-mode-alist '("\\.\\(yml\\|yaml\\)$" . yaml-mode))
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
+
 ;; Ruby hooks
-(add-hook 'ruby-mode-hook (lambda ()
-                            (flymake-ruby-load)))
-;;                             ;; Rcodetools
-;;                             (require 'rcodetools)
-;;                             (local-set-key "\M-\C-i" 'rct-complete-symbol)
-;;                                         ;                            (local-set-key [f2] 'xmp)
-                            ;; IRB
-                            ;; (require 'inf-ruby)
-                            ;; (inf-ruby-keys)
-                            ;; (local-set-key "\C-c\C-e" 'ruby-insert-end)))
-;;                             ;; ri support
-;;                             (setq ri-ruby-script
-;;                                   (concat emacs-d-root "modes/ruby/ri-emacs.rb"))
-;;                             (autoload 'ri
-;;                               (concat emacs-d-root "modes/ruby/ri-ruby") nil t)
-;;                             (local-set-key [f1] 'ri)
-;;                             (local-set-key [f4] 'ri-ruby-show-args)
-;;                             (require 'rvm)
-;;                             (rvm-use-default)
-;;                             (require 'rhtml-mode)
-;;                             (require 'rinari) ;; Rails minor mode and Ruby utilities
-;;                             ;; Autotest
-;;                             (if (not (eq window-system nil))
-;;                                 (progn
-;;                                   (require 'unit-test)
-;;                                   (require 'autotest)
-;;                                   (setq autotest-use-ui t)))))
-(add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\|Vagrantfile\\|Capfile\\)" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\|Vagrantfile\\|Capfile\\)" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . enh-ruby-mode))
+
+(add-hook 'enh-ruby-mode-hook (lambda()
+                                ; (flymake-ruby-load)
+                                (robe-mode)
+                                (yard-mode)
+                                ))
+
 ;; HAML-mode
 (autoload 'haml-mode "haml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.\\(haml\\|hml\\)$" . haml-mode))
