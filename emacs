@@ -1,7 +1,9 @@
 ; -*- mode: emacs-lisp -*-
 ;; The home directory
-(defvar emacs-root (getenv "HOME"))
-(defvar emacs-d-root (concat emacs-root "/code/conf/emacs.d/"))
+(if (not (boundp 'emacs-root))
+     (defvar emacs-root (getenv "HOME")))
+(if (not (boundp 'emacs-d-root))
+    (defvar emacs-d-root (concat emacs-root "/code/emacs.d/")))
 (setq user-emacs-directory emacs-d-root)
 
 
