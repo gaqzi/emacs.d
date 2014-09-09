@@ -135,6 +135,11 @@
 (global-set-key (kbd "C-. g f") 'github-browse-file)
 (global-set-key (kbd "C-. g b") 'github-browse-file-blame)
 
+;; Some ag shortcuts
+(global-set-key (kbd "C-. g *") 'ag-project)
+(global-set-key (kbd "C-. g g") 'ag)
+(setq aq-highlight-search t)
+
 (elpy-enable)
 
 ;; Go
