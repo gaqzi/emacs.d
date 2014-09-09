@@ -119,3 +119,25 @@
 ;;
 ;; Will try it on globally for now
 (subword-mode)
+
+
+(setq ispell-program-name "hunspell")
+
+
+(if (not (eq window-system nil))
+    (progn
+      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
+      (color-theme-sunburst)))
+
+(if (or (eq window-system nil) (eq system-type 'darwin))
+    (progn
+      (custom-set-faces
+       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
+      (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+      (add-to-list 'exec-path "/usr/local/sbin")
+      (add-to-list 'exec-path "/usr/local/bin")
+      (add-to-list 'exec-path "/usr/local/mysql/bin")
+      (add-to-list 'exec-path "/Users/ba/bin")
+      (add-to-list 'exec-path "/Users/ba/.rvm/bin")
+      (custom-set-faces
+       '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "Apple" :family "Monaco")))))))

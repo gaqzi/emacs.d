@@ -62,30 +62,3 @@
  '(yas-snippet-dirs
    (quote
     ("/Users/ba/code/emacs.d/elpa/yasnippet-20140303.53/snippets" "/Users/ba/code/emacs.d/elpa/go-snippets-20130821.844/snippets" "/Users/ba/code/emacs.d/snippets/" "/Users/ba/code/emacs.d/elpa/elpy-20140213.1028/snippets/" "~/.emacs.d/snippets")) nil (yasnippet)))
-
-(if (not (eq window-system nil))
-    (progn
-      (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
-      (color-theme-sunburst)))
-
-;; Non Mac OS X GUI settings
-(if (not (or (eq window-system nil) (eq system-type 'darwin)))
-    (progn
-      ;; (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
-      ;; (color-theme-sunburst)
-      (custom-set-faces
-       '(default ((t (:inherit nil :stipple nil :background "#111" :foreground "#ddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))))
-
-  ;; OSX GUI Settings
-  (if (or (not (eq window-system nil)) (eq system-type 'darwin))
-      (progn
-        (custom-set-faces
-         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
-        (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
-        (add-to-list 'exec-path "/usr/local/sbin")
-        (add-to-list 'exec-path "/usr/local/bin")
-        (add-to-list 'exec-path "/usr/local/mysql/bin")
-        (add-to-list 'exec-path "/Users/ba/bin")
-        (add-to-list 'exec-path "/Users/ba/.rvm/bin")
-        (custom-set-faces
-         '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco"))))))))
