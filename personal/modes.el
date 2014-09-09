@@ -3,7 +3,6 @@
      (concat emacs-d-root p))))
   (add-path "modes/django")
   (add-path "modes/python/")
-  (add-path "utils")
 )
 (load-file (concat emacs-d-root "personal/region-commands.el"))
 
@@ -24,11 +23,17 @@
 (require 'midnight)
 
 ;; Easier moving between open buffers in frame with C-c<arrow key>
-(require 'windmove)
+;(require 'windmove)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
+
+; Add in some vi movement keys here, been using too much vim lately.
+(global-set-key (kbd "C-. C-l")     'windmove-right)
+(global-set-key (kbd "C-. C-h")     'windmove-left)
+(global-set-key (kbd "C-. C-j")     'windmove-down)
+(global-set-key (kbd "C-. C-k")     'windmove-up)
 
 ;; Don't pair parens
 (setq skeleton-pair nil)
