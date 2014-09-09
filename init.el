@@ -1,4 +1,3 @@
-
 ;; Loose the UI
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -108,10 +107,6 @@
 
 ;; Enable emacsclient
 (server-start)
-
-;; smart electric pairs
-(electric-pair-mode)
-;; (setq electric-pair-preserve-balance t)
 
 ;; Subword mode, TreatThisWordAsSeveral I'm not sure this is a good
 ;; idea to keep on for every mode, but I imagine at least some
