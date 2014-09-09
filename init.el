@@ -128,11 +128,9 @@
     (progn
       (custom-set-faces
        '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "Apple" :family "Monaco")))))
-      (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/X11R6/bin:/usr/local/mysql/bin:/Users/ba/.rvm/bin:" (getenv "PATH")))
+      (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:" (getenv "PATH")))
       (add-to-list 'exec-path "/usr/local/sbin")
       (add-to-list 'exec-path "/usr/local/bin")
-      (add-to-list 'exec-path "/usr/local/mysql/bin")
       (add-to-list 'exec-path "/Users/ba/bin")
-      (add-to-list 'exec-path "/Users/ba/.rvm/bin")
       (custom-set-faces
        '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "Apple" :family "Monaco")))))))
