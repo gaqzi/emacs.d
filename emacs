@@ -6,16 +6,15 @@
     (defvar emacs-d-root (concat emacs-root "/code/emacs.d/")))
 (setq user-emacs-directory emacs-d-root)
 
-
 (require 'cl)
 (cd emacs-root) ; Start emacs from my home and nowhere else!
-
 
 ;; package.el init
 ; installed packages
 (setq package-list '(ac-js2
                      anything
                      auto-complete
+                     ag
                      coffee-mode
                      dash
                      elpy
