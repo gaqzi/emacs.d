@@ -6,12 +6,6 @@
 )
 (load-file (concat emacs-d-root "personal/region-commands.el"))
 
-;; Make the window transparent in Mac OS X when not running from a
-;; terminal requires Carbon Emacs
-(if (and (eq system-type 'darwin)
-         (eq window-system 'mac))
-    (set-frame-parameter nil 'alpha 95))
-
 ;; Uniquify the buffer names by adding the path instead of file<2> file<3> etc
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'reverse)
