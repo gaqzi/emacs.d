@@ -29,6 +29,26 @@
 (global-set-key (kbd "C-. C-j")     'windmove-down)
 (global-set-key (kbd "C-. C-k")     'windmove-up)
 
+;; Neotree (like NerdTREE for vim)
+(defun neotree-project-dir ()
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (ffip-project-root))
+        (file-name (buffer-file-name)))
+    (if project-dir
+        (progn
+          (neotree-dir project-dir)
+          (neotree-find file-name))
+      (message "Could not find git project root."))))
+
+(defun ba-neotree-toggle ()
+  "Toggle show the NeoTree window using the current project root."
+  (interactive)
+  (if (neo-global--window-exists-p)
+      (neotree-hide)
+    (neotree-project-dir)))
+(global-set-key (kbd "C-. g t") 'ba-neotree-toggle)
+
 ;; Don't pair parens
 (setq skeleton-pair nil)
 

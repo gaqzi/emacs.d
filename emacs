@@ -57,6 +57,7 @@
                      mode-compile
                      move-text
                      multi-web-mode
+                     neotree
                      nose
                      pcache
                      php-mode
