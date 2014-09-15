@@ -49,6 +49,10 @@
     (neotree-project-dir)))
 (global-set-key (kbd "C-. g t") 'ba-neotree-toggle)
 
+;; Set the default find file to search in current git repository
+;; (C-x C-f to search with normal ido, and again to normal file)
+(global-set-key (kbd "C-x C-f") 'find-file-in-repository)
+
 ;; Don't pair parens
 (setq skeleton-pair nil)
 

@@ -20,6 +20,7 @@
                      elpy
                      feature-mode
                      fic-ext-mode
+                     find-file-in-repository
                      find-file-in-project
                      flymake
                      flymake-css
