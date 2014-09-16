@@ -5,6 +5,7 @@
   (add-path "modes/python/")
 )
 (load-file (concat emacs-d-root "personal/region-commands.el"))
+(load-file (concat emacs-d-root "personal/org-mode.el"))
 
 ;; Uniquify the buffer names by adding the path instead of file<2> file<3> etc
 (require 'uniquify)
@@ -48,10 +49,6 @@
       (neotree-hide)
     (neotree-project-dir)))
 (global-set-key (kbd "C-. g t") 'ba-neotree-toggle)
-
-;; Set the default find file to search in current git repository
-;; (C-x C-f to search with normal ido, and again to normal file)
-(global-set-key (kbd "C-x C-f") 'find-file-in-repository)
 
 ;; Don't pair parens
 (setq skeleton-pair nil)
@@ -104,11 +101,12 @@
 (add-to-list 'auto-mode-alist '("\\(Gemfile\\|Rakefile\\|Vagrantfile\\|Capfile\\)" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(gemspec\\|rake\\)$" . enh-ruby-mode))
 
+;; Don't use enh-ruby modes syntax checking, use flymake-ruby instead
+(setq enh-ruby-check-syntax nil)
 (add-hook 'enh-ruby-mode-hook (lambda()
-                                ; (flymake-ruby-load)
+                                (flymake-ruby-load)
                                 (robe-mode)
-                                (yard-mode)
-                                ))
+                                (yard-mode)))
 
 ;; HAML-mode
 (autoload 'haml-mode "haml-mode" nil t)

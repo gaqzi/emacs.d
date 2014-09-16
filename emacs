@@ -16,6 +16,7 @@
                      auto-complete
                      ag
                      coffee-mode
+                     color-theme
                      dash
                      elpy
                      feature-mode
