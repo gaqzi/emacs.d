@@ -28,8 +28,11 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 ;; Rerun keyboard macro on F5
 (global-set-key [f5]       'call-last-kbd-macro)
-(global-set-key "\M-/"     'hippie-expand)
+(global-set-key "\M-/"     'dabbrev-expand)
 (global-set-key "\C-xg"    'magit-status)
+;; For some reason this command is marked as being global, but doesn't
+;; work without an explicit shortcut
+(global-set-key (kbd "C-x w .")  'highlight-symbol-at-point)
 
 ;; Interactive DO - buffers autocomplete <3
 (require 'ido)
@@ -68,7 +71,9 @@
       ;; I do not want this stupid default behavior
       transient-mark-mode nil
       ;; Try to get spellchecker to work
-      ispell-program-name "hunspell")
+      ispell-program-name "hunspell"
+      ;; A sentence doesn't end with two spaces
+      sentence-end-double-space nil)
 
 
 ;; A tab is 4 spaces and don't insert tabs unless the given mode forces it.

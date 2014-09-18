@@ -31,6 +31,8 @@
 (global-set-key (kbd "C-. C-k")     'windmove-up)
 
 ;; Neotree (like NerdTREE for vim)
+(require 'neotree)
+(require 'find-file-in-project)
 (defun neotree-project-dir ()
   "Open NeoTree using the git root."
   (interactive)
