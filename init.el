@@ -10,6 +10,7 @@
   (add-path "personal")  ;; My own configuration and stuff
   (add-path "modes"))
 
+(load-file (concat emacs-d-root "personal/modes.el"))
 (load-library "modes") ;; configuration for modes
 
 ;; Load path for custom emacs 24 themes
