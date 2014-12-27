@@ -9,12 +9,34 @@
 (require 'cl)
 (cd emacs-root) ; Start emacs from my home and nowhere else!
 
+;; Set default encoding UTF-8
+(setq set-language-environment "UTF-8"
+      locale-coding-system      'utf-8)
+(set-terminal-coding-system     'utf-8)
+(set-keyboard-coding-system     'utf-8)
+(set-selection-coding-system    'utf-8)
+(prefer-coding-system           'utf-8)
+
+(setq melpa-package-list
+      '(ac-js2
+        anything
+        flymake-yaml
+        git-rebase-mode
+        go-autocomplete
+        go-eldoc
+        go-mode
+        go-snippets
+        hl-todo
+        magit-push-remote
+        neotree
+        enh-ruby-mode
+        yard-mode
+        ))
+
 ;; package.el init
 ; installed packages
 (setq package-list
-      '(ac-js2
-        anything
-        auto-complete
+      '(auto-complete
         ag
         coffee-mode
         color-theme
@@ -22,8 +44,8 @@
         elpy
         feature-mode
         fic-ext-mode
-        find-file-in-repository
-        find-file-in-project
+        fiplr
+        flx-ido
         flymake
         flymake-css
         flymake-cursor
@@ -32,62 +54,48 @@
         flymake-json
         flymake-less
         flymake-shell
-        flymake-yaml
         fold-dwim
         fuzzy
         gh
         gist
         git-commit-mode
         github-browse-file
-        git-rebase-mode
-        go-autocomplete
-        go-eldoc
-        go-mode
-        go-snippets
         highlight-indentation
-        historyf
-        hl-todo
         idomenu
         iedit
         js2-mode
         json-mode
-        json-reformat
         less-css-mode
-        logito
         magit
-        magit-push-remote
         markdown-mode
         mode-compile
         move-text
         multi-web-mode
-        neotree
-        nose
-        pcache
-        php-mode
         popup
         popwin
         python-django
-        python-mode
-        pyvenv
-        vcl-mode
         yaml-mode
         yasnippet
 
         ;; Ruby
-        enh-ruby-mode
         robe
-        yard-mode
         rspec-mode
         ruby-mode
         ruby-tools
         flymake-ruby
+
+        ;; evil
+        evil
+        evil-surround
         ))
+
+(popwin-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ; fetch the list of packages available

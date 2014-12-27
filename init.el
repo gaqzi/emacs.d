@@ -3,21 +3,14 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; add all the elisp directories under ~/.emacs.d to my load path
-(labels ((add-path (p)
-                   (add-to-list 'load-path
-                                (concat emacs-d-root p))))
-  (add-path "personal")  ;; My own configuration and stuff
-  (add-path "modes"))
-
 (load-file (concat emacs-d-root "personal/modes.el"))
-(load-library "modes") ;; configuration for modes
 
 ;; Load path for custom emacs 24 themes
 (add-to-list 'custom-theme-load-path (concat emacs-d-root "themes"))
 
 ;; Where to save the custom variables
-(setq custom-file (concat emacs-d-root "custom.el"))
+(setq custom-file
+ (concat emacs-d-root "custom.el"))
 (load custom-file)
 
 ;; M-x with C-x C-m
@@ -35,13 +28,20 @@
 ;; work without an explicit shortcut
 (global-set-key (kbd "C-x w .")  'highlight-symbol-at-point)
 
-;; Interactive DO - buffers autocomplete <3
+; (helm-mode 1)
+;; ;; Interactive DO - buffers autocomplete <3
 (require 'ido)
 (ido-mode t)
+(ido-everywhere 1)
+;(require 'flx-ido)
+;(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 ;; Set the default find file to search in current git repository
 ;; (C-x C-f to search with normal ido, and again to normal file)
-(global-set-key (kbd "C-x C-f") 'find-file-in-repository)
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
 
 ;; lots of perrty colors!
 (defconst font-lock-maximum-decoration t)
@@ -76,13 +76,12 @@
       ;; A sentence doesn't end with two spaces
       sentence-end-double-space nil)
 
-
 ;; A tab is 4 spaces and don't insert tabs unless the given mode forces it.
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
 ;; Show matching parens
-(show-paren-mode t)
+;(show-paren-mode t)
 
 ;; Put the path in buffer names, no more index.txt<2>!
 (require 'uniquify)
@@ -96,14 +95,6 @@
       (delete-trailing-whitespace))))
 (add-hook 'before-save-hook 'ba-delete-trailing-whitespace)
 (add-hook 'after-save-hook  'executable-make-buffer-file-executable-if-script-p)
-
-;; Set default encoding UTF-8
-(setq set-language-environment "UTF-8"
-      locale-coding-system      'utf-8)
-(set-terminal-coding-system     'utf-8)
-(set-keyboard-coding-system     'utf-8)
-(set-selection-coding-system    'utf-8)
-(prefer-coding-system           'utf-8)
 
 (require 'info)
 (setq Info-directory-list (cons (concat emacs-d-root "info/")
@@ -133,17 +124,15 @@
    '(highlight-indentation-current-column-face ((t (:background "gray15"))))
    '(highlight-indentation-face ((t (:background "gray15")))))
   (load (concat emacs-d-root "themes/theme-desert.el"))
-  ;; Until I've made up my mind about which theme to use I'll keep these around commented out
-  ; (load (concat emacs-d-root "color-theme/themes/color-theme-sunburst.el"))
-  ; (color-theme-sunburst)))
 
-  ;; Set a nice font
+   ;; Set a nice font
   (set-frame-font "Source Code Pro")
   (set-face-attribute 'default nil :font "Source Code Pro" :height 130 :weight 'ExtraLight)
   (set-face-font 'default "Source Code Pro")
+ )
 
-  ;; And some paths
-  (setenv "PATH" (concat "/Users/ba/bin:/Users/ba/code/go/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:" (getenv "PATH")))
-  (add-to-list 'exec-path "/usr/local/sbin")
-  (add-to-list 'exec-path "/usr/local/bin")
-  (add-to-list 'exec-path "/Users/ba/bin"))
+; Dynamically set PATH
+(if (eq system-type 'darwin)
+    (setenv "PATH" (concat
+                    (shell-command-to-string "/bin/zsh -l -c 'echo -n $PATH'")
+                    ":" (getenv "HOME") "/bin")))

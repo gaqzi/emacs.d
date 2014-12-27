@@ -1,11 +1,12 @@
-(labels ((add-path (p)
-   (add-to-list 'load-path
-     (concat emacs-d-root p))))
-  (add-path "modes/django")
-  (add-path "modes/python/")
-)
+;; (labels ((add-path (p)
+;;    (add-to-list 'load-path
+;;      (concat emacs-d-root p))))
+;;   (add-path "modes/django")
+;;   (add-path "modes/python/")
+;; )
 (load-file (concat emacs-d-root "personal/region-commands.el"))
 (load-file (concat emacs-d-root "personal/org-mode.el"))
+(add-hook 'evil-mode '(load-file (concat emacs-d-root "personal/evil.el")))
 
 ;; Uniquify the buffer names by adding the path instead of file<2> file<3> etc
 (require 'uniquify)
@@ -14,46 +15,46 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-;; Remove unused buffers at midnight
+;; ;; Remove unused buffers at midnight
 (require 'midnight)
 
 ;; Easier moving between open buffers in frame with C-c<arrow key>
 ;(require 'windmove)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 
-; Add in some vi movement keys here, been using too much vim lately.
+;; Add in some vi movement keys here, been using too much vim lately.
 (global-set-key (kbd "C-. C-l")     'windmove-right)
 (global-set-key (kbd "C-. C-h")     'windmove-left)
 (global-set-key (kbd "C-. C-j")     'windmove-down)
 (global-set-key (kbd "C-. C-k")     'windmove-up)
 
 ;; Neotree (like NerdTREE for vim)
-(require 'neotree)
-(require 'find-file-in-project)
-(defun neotree-project-dir ()
-  "Open NeoTree using the git root."
-  (interactive)
-  (let ((project-dir (ffip-project-root))
-        (file-name (buffer-file-name)))
-    (if project-dir
-        (progn
-          (neotree-dir project-dir)
-          (neotree-find file-name))
-      (message "Could not find git project root."))))
-
-(defun ba-neotree-toggle ()
-  "Toggle show the NeoTree window using the current project root."
-  (interactive)
-  (if (neo-global--window-exists-p)
-      (neotree-hide)
-    (neotree-project-dir)))
-(global-set-key (kbd "C-. g t") 'ba-neotree-toggle)
+;; (require 'neotree)
+;; (require 'find-file-in-project)
+;; (defun neotree-project-dir ()
+;;   "Open NeoTree using the git root."
+;;   (interactive)
+;;   (let ((project-dir (ffip-project-root))
+;;         (file-name (buffer-file-name)))
+;;     (if project-dir
+;;         (progn
+;;           (neotree-dir project-dir)
+;;           (neotree-find file-name))
+;;       (message "Could not find git project root."))))
+;;
+;; (defun ba-neotree-toggle ()
+;;   "Toggle show the NeoTree window using the current project root."
+;;   (interactive)
+;;   (if (neo-global--window-exists-p)
+;;       (neotree-hide)
+;;     (neotree-project-dir)))
+;; (global-set-key (kbd "C-. g t") 'ba-neotree-toggle)
 
 ;; Don't pair parens
-(setq skeleton-pair nil)
+;(setq skeleton-pair nil)
 
 ;; Global hooks
 (add-hook 'prog-mode-hook #'hs-minor-mode)
@@ -122,13 +123,13 @@
 ;; Improved compile mode
 (autoload 'mode-compile "mode-compile"
   "Command to compile current buffer file based on the major mode" t)
-(global-set-key "\C-cc" 'mode-compile)
+(global-set-key "\C-cc" 'smart-compile)
 (autoload 'mode-compile-kill "mode-compile"
   "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
 
 ;; Django modes
-(require 'django-html-mode)
+;(require 'django-html-mode)
 
 ;; zsh
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
@@ -175,5 +176,5 @@
 (define-key global-map (kbd "C-. '") 'my-hs-toggle-all)
 
 ;; React JSX
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
-(autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-mode))
+; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
